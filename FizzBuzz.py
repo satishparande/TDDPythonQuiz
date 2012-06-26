@@ -11,8 +11,9 @@ Q2. How will you change the api of the report method to make it more testable ? 
 
 """
 class FizzBuzz(object):
-    def report(self, numbers, file_handle):
+    def report(self, numbers, fileWrapper):
 
+        fileWrapper.open()
         for number in numbers:
             msg = str(number) + " "
             fizzbuzz_found = False
@@ -24,14 +25,29 @@ class FizzBuzz(object):
                 fizzbuzz_found = True
 
             if fizzbuzz_found:
-                file_handle.write(msg + "\n")
+                fileWrapper.write(msg + "\n")
 
-        file_handle.close()
+        fileWrapper.close()
 
 if "__main__" == __name__:
     fb = FizzBuzz()
-    file_handle = open('temp.txt', 'w') # can create open wrapper  
-    fb.report(range(100), file_handle)
+    fileWrapper = FileWrapper('temp.txt', 'w') # can create open wrapper  
+    fb.report(range(100), fileWrapper)
 
+class FileWrapper:
+        def __init__(self, fname, mode):
+            self.filename = fname
+            self.mode = mode
+            
+        def open(self):
+            self.filehandle = open (self.filename, self.mode)
+            return self.filehandle
+            
+        def write(self, buff):
+            self.filehandle.write(msg)\
+
+        def close(self)
+            self.filehandle.close()
+            
 
             
