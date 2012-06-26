@@ -17,7 +17,14 @@ class TestFizzBuzzMocked(pymock.PyMockTestCase):
         self.fb = None
 
     def test_report(self):
-        pass
+        #create mock
+        report_wrapper_mock = self.mock()
+        #set expectations
+        
+        #call api
+        
+        #verify
+                report_wrapper_mock = 
 
 
 
