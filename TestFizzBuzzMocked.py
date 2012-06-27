@@ -18,13 +18,17 @@ class TestFizzBuzzMocked(pymock.PyMockTestCase):
 
     def test_report(self):
         #create mock
-        report_wrapper_mock = self.mock()
-        #set expectations
-        
-        #call api
-        
-        #verify
-                report_wrapper_mock = 
+        mockFileProvider = self.mock()
+        mockFileWrapper = self.mockFileProvider('report.txt', 'w')
+        #replay        
+        self.replay()        
+        #Call the report method with mocked filewrapper        
+        numbers=range(100)        
+        FizzBuzz.report(self.numbers,self.mockFileWrapper)                
+        #verify        
+        self.verify()
+ 
+
 
 
 
